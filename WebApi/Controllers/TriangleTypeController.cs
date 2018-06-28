@@ -19,7 +19,7 @@ namespace WebApi.Controllers
         // GET api/values/5
         public string Get(int a, int b, int c)
         {
-            SendRequestToGoogleAnalytics();
+            //SendRequestToGoogleAnalytics();
             string triType = "";
             if (a == 0 || b == 0 || c == 0)
             {

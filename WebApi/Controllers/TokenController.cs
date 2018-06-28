@@ -13,7 +13,7 @@ namespace WebApi.Controllers
         // GET api/values
         public Guid  Get()
         {
-            SendRequestToGoogleAnalytics();
+            //SendRequestToGoogleAnalytics();
             Guid myGuid = new Guid("0db1e0a8-7306-4978-bc86-405f528ebe4d");
             //myGuid = Guid.NewGuid();
             return myGuid;

@@ -27,7 +27,7 @@ namespace WebApi.Controllers
             //    return "Error";
             //}
 
-            SendRequestToGoogleAnalytics();
+            //SendRequestToGoogleAnalytics();
             int myNumber = Convert.ToInt32(n);
             
 
