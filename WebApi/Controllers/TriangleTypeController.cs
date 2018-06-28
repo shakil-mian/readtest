@@ -21,7 +21,7 @@ namespace WebApi.Controllers
         {
             //SendRequestToGoogleAnalytics();
             string triType = "";
-            if (a == 0 || b == 0 || c == 0)
+            if (!isValidTriangle(a,b,c))
             {
                 triType = "Error";
             }
@@ -37,18 +37,30 @@ namespace WebApi.Controllers
                 else if (a != b && b != c && c !=a)
                 {
                     triType = "Scalene";
-                    int[] sides = new int[3];
-                    sides[0] = a;
-                    sides[1] = b;
-                    sides[2] = c;
-                    Array.Sort(sides);
-                    if (sides[0] + sides[1] <= sides[2])
-                    {
-                        triType = "Error";
-                    }
                 }
             }
             return triType;
+        }
+
+        private static bool isValidTriangle(int a, int b, int c)
+        {
+            bool isvalid = true;
+            if (a < 1 || b < 1 || c < 1)
+            {
+                isvalid = false;
+            }
+
+            int[] sides = new int[3];
+            sides[0] = a;
+            sides[1] = b;
+            sides[2] = c;
+            Array.Sort(sides);
+            if (sides[0] + sides[1] <= sides[2])
+            {
+                isvalid = false;
+            }
+
+            return isvalid;
         }
 
         private static bool rightAngle(int a, int b, int c)

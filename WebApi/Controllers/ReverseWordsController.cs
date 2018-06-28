@@ -9,23 +9,18 @@ namespace WebApi.Controllers
 {
     public class ReverseWordsController : ApiController
     {
-        //http://shakilmian-webapi.azurewebsites.net/api/ReverseWords?sentence=P!u@n#c$t%u^a&t*i(o)n
+
         // GET api/values
         public string Get([FromUri]string sentence = null)
         {
             //SendRequestToGoogleAnalytics();
+            
             if (sentence == null)
             {
                 sentence = "";
             }
             return reverseIt(sentence);
         }
-
-        // GET api/values/5
-        //public string Get()
-        //{
-        //    return "";
-        //}
 
         private static string reverseIt(string val)
         {
