@@ -8,7 +8,7 @@ using System.Web;
 
 namespace WebApi.Controllers
 {
-    public class TriangleTypeController : ApiController
+    public class TriangleTypeController : BaseController
     {
         // GET api/values
         public string Get([FromUri]string a = null, [FromUri]string b = null, [FromUri]string c = null)
@@ -19,7 +19,7 @@ namespace WebApi.Controllers
         // GET api/values/5
         public string Get(int a, int b, int c)
         {
-            //SendRequestToGoogleAnalytics();
+            SendRequestToGoogleAnalytics();
             string triType = "";
             if (!isValidTriangle(a,b,c))
             {
@@ -84,51 +84,6 @@ namespace WebApi.Controllers
         {
         }
 
-        private void SendRequestToGoogleAnalytics()
-        {
-
-            string utmGifLocation = "http://www.google-analytics.com/__utm.gif";
-            var context = Request.GetRequestContext();
-
-            string RandomNumber = "";
-            string domainName = "";
-            string documentReferer = "";
-            string documentPath = context.Url.Request.RequestUri.ToString();
-            string account = "UA-121538198-1";
-            string visitorId = "";
-
-            string utmUrl = utmGifLocation + "?" +
-                "utmwv=" + "version" +
-                "&utmn=" + RandomNumber +
-                "&utmhn=" + HttpUtility.UrlEncode(domainName) +
-                "&utmr=" + HttpUtility.UrlEncode(documentReferer) +
-                "&utmp=" + HttpUtility.UrlEncode(documentPath) +
-                "&utmac=" + account +
-                "&utmcc=__utma%3D999.999.999.999.999.1%3B" +
-                "&utmvid=" + visitorId;//+
-                                       //"&utmip=" + GlobalContext.Request.ServerVariables["REMOTE_ADDR"];
-
-            //try
-            //{
-            WebRequest connection = WebRequest.Create(utmUrl);
-
-            //((HttpWebRequest)connection).UserAgent = GlobalContext.Request.UserAgent;
-            //connection.Headers.Add("Accepts-Language",
-            //GlobalContext.Request.Headers.Get("Accepts-Language"));
-
-            using (WebResponse resp = connection.GetResponse())
-            {
-                // Ignore response
-            }
-            //}
-            //catch (Exception ex)
-            //{
-            //    if (GlobalContext.Request.QueryString.Get("utmdebug") != null)
-            //    {
-            //        throw new Exception("Error contacting Google Analytics", ex);
-            //    }
-            //}
-        }
 
     }
 }
